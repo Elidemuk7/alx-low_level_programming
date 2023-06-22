@@ -2,39 +2,41 @@
 #include <stdlib.h>
 
 /**
- * main - prints the opcodes
- * @argc: argument count
- * @argv: argument vector
- * Return: always 0
+ * main - prints its own opcodes
+ * @argc: number of arguments
+ * @argv: array of arguments
+ *
+ * Return: Always 0 (Success)
  */
-
 int main(int argc, char *argv[])
 {
-	int a;
-	int i = 0;
-	char *c;
+	int bytes, i;
+	char *arr;
 
 	if (argc != 2)
 	{
 		printf("Error\n");
 		exit(1);
 	}
-	a = atoi(argv[1]);
-	if (a < 0)
+
+	bytes = atoi(argv[1]);
+
+	if (bytes < 0)
 	{
 		printf("Error\n");
 		exit(2);
 	}
-	c = (char *)main;
-	while (i < a)
+
+	arr = (char *)main;
+
+	for (i = 0; i < bytes; i++)
 	{
-		if (i == a - 1)
+		if (i == bytes - 1)
 		{
-			printf("%02hhx\n", c[i]);
+			printf("%02hhx\n", arr[i]);
 			break;
 		}
-		i++;
-		printf("%02hhx ", c[i]);
+		printf("%02hhx ", arr[i]);
 	}
 	return (0);
 }
