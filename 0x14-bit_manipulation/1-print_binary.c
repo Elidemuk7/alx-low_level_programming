@@ -7,24 +7,8 @@
 
 void print_binary(unsigned long int n)
 {
-	int i;
-	int x;
-	unsigned long int cu;
+	if (n > 1)
+		print_binary(n >> 1);
 
-	i = 63, x = 0;
-
-	while (i >= 0)
-	{
-		cu = n >> i;
-		if (cu & 1)
-		{
-			_putchar('1');
-			x++;
-		}
-		else if (x)
-			_putchar('0');
-	}
-	i--;
-	if (!x)
-		_putchar('0');
+	_putchar((n & 1) + '0');
 }
