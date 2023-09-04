@@ -1,12 +1,11 @@
 #include "main.h"
-#include <stdio.h>
 
 /**
  * error_file - checks if files can be opened.
- * @file_from: file_from.
- * @file_to: file_to.
- * @argv: arguments vector.
- * Return: no return.
+ * @file_from: file copied from
+ * @file_to: file_ copied to
+ * @argv:  the arguments vector
+ * Return: null
  */
 void error_file(int file_from, int file_to, char *argv[])
 {
@@ -24,14 +23,14 @@ void error_file(int file_from, int file_to, char *argv[])
 
 /**
  * main - check the code for Holberton School students.
- * @argc: number of arguments.
- * @argv: arguments vector.
+ * @argc: the number of arguments
+ * @argv: the arguments vector
  * Return: Always 0.
  */
 int main(int argc, char *argv[])
 {
 	int file_from, file_to, err_close;
-	ssize_t nchars, nwr;
+	ssize_t n_chars, n_wr;
 	char buf[1024];
 
 	if (argc != 3)
@@ -44,14 +43,14 @@ int main(int argc, char *argv[])
 	file_to = open(argv[2], O_CREAT | O_WRONLY | O_TRUNC | O_APPEND, 0664);
 	error_file(file_from, file_to, argv);
 
-	nchars = 1024;
-	while (nchars == 1024)
+	n_chars = 1024;
+	while (n_chars == 1024)
 	{
-		nchars = read(file_from, buf, 1024);
-		if (nchars == -1)
+		n_chars = read(file_from, buf, 1024);
+		if (n_chars == -1)
 			error_file(-1, 0, argv);
-		nwr = write(file_to, buf, nchars);
-		if (nwr == -1)
+		n_wr = write(file_to, buf, n_chars);
+		if (n_wr == -1)
 			error_file(0, -1, argv);
 	}
 
